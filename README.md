@@ -1,12 +1,12 @@
-# CICD-K8S-Project
+# K8S-CICD-Lab
 
 This is a custom CICD project for automated build and deployment of a simple nginx web app on kubernetes.
 
 ## Prerequisites and dependencies:
 
- - A host (Linux/Windows) with pre-installed Jenkins, Docker and any CD application (in our case Ubuntu EC2 instance + ArgoCD) 
- - A clean kubernetes cluster + deployed ingress controller, metrics-server, Helm and kubeseal
- - A custom-built docker image with docker and git to server as and Jenkins Agent for the Jenkins pipel
+ - A host (Linux/Windows) with pre-installed Jenkins, Docker and any CD application (in our case Ubuntu EC2 instance + ArgoCD) + Helm and kubeseal installed
+ - A kubernetes cluster with deployed ingress controller, metrics-server
+ - A custom-built image with docker and git to use as a Jenkins Agent
 ##    
 * All of the following steps are assuming and Ubuntu EC2 instance as a host for the CICD
 * Sources:
@@ -46,19 +46,14 @@ sudo apt install docker.io
 
 # Grant Jenkins user and Ubuntu user permission to Docker.
 
-sudo su - 
-usermod -aG docker jenkins
-usermod -aG docker ubuntu
+sudo usermod -aG docker jenkins
+sudo usermod -aG docker ubuntu
 systemctl restart docker
 
-# Deploy The Argo CD Operator on the kubernetes cluster
+# Deploy The ArgoCD Operator on the kubernetes cluster
 
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.25.0/install.sh | bash -s v0.25.0
 kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
-
-# After install, watch your operator come up using next command.
-
-kubectl get csv -n operators
 
 # Deploy the SealedSecrets helm chart
 
