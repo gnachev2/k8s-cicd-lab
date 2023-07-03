@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: nginx-deploy
-        image: gnachev/hello-world:2
+        image: gnachev/hello-world:3
         livenessProbe:
           exec:
             command:
