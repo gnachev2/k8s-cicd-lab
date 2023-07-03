@@ -9,11 +9,6 @@ This is a custom CICD project for automated build and deployment of a simple ngi
  - A custom-built image with docker and git to use as a Jenkins Agent
 ##    
 * All of the following steps are assuming and Ubuntu EC2 instance as a host for the CICD
-* Sources:
-  - [Jenkins](https://www.jenkins.io/doc/book/installing/linux/)
-  - [Docker](https://docs.docker.com/desktop/install/ubuntu/#install-docker-desktop)
-  - [ArgoCD](https://operatorhub.io/operator/argocd-operator)
-  - [SealedSecrets](https://github.com/bitnami-labs/sealed-secrets)
 
 ```bash
 
@@ -59,3 +54,8 @@ kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
 
 helm install sealed-secrets -n kube-system --set-string fullnameOverride=sealed-secrets-controller sealed-secrets/sealed-secrets
 ```
+* Sources:
+  - [Jenkins](https://www.jenkins.io/doc/book/installing/linux/)
+  - [Docker](https://docs.docker.com/desktop/install/ubuntu/#install-docker-desktop)
+  - [ArgoCD](https://operatorhub.io/operator/argocd-operator)
+  - [SealedSecrets](https://github.com/bitnami-labs/sealed-secrets)
