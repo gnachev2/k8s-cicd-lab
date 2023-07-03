@@ -7,8 +7,8 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/gnachev2/cicd-k8s-project.git'
+        sh 'echo Stage Passed'
+        //git branch: 'main', url: 'https://github.com/gnachev2/k8s-cicd-lab.git'
       }
     }
     stage('Build and Push Docker Image') {
@@ -29,7 +29,7 @@ pipeline {
     }
     stage('Update Deployment File') {
       environment {
-        GIT_REPO_NAME = "cicd-k8s-project"
+        GIT_REPO_NAME = "k8s-cicd-lab"
         GIT_USER_NAME = "gnachev2"
       }
       steps {
